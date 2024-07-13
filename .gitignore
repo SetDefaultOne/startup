@@ -199,3 +199,5 @@ dist
 
 TODO.md
 .turbo/
+.idea/
+.vscode/
