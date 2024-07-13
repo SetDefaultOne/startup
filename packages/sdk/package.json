@@ -1,0 +1,5 @@
+{
+    "name": "@bootstrap-brand/sdk",
+    "version": "0.0.1",
+    "main": "src/sdk.ts"
+}
