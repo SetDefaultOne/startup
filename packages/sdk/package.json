@@ -5,16 +5,16 @@
     "source": "src/main.ts",
     "exports": {
         "require": "./dist/main.cjs",
-        "default": "./dist/main.modern.js",
-        "types": "./dist/src/main.d.ts"
+        "types": "./dist/src/main.d.ts",
+        "default": "./dist/main.modern.js"
     },
     "main": "./dist/main.cjs",
     "module": "./dist/main.js",
     "unpkg": "./dist/main.umd.js",
     "types": "./dist/src/main.d.ts",
     "scripts": {
-        "develop": "microbundle watch",
-        "build": "microbundle"
+        "develop": "microbundle watch --compress=false",
+        "build": "microbundle --compress=false"
     },
     "devDependencies": {
         "microbundle": "0.15.1",

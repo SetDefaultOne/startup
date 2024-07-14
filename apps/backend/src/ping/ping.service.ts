@@ -15,7 +15,7 @@ export class PingService {
     async getPing(): Promise<ResponseBody<GetPingSuccessResponseData>> {
         return {
             status: "success",
-            message: "Ping!",
+            message: "Pong!",
             data: {
                 environment: this.appConfiguration.deployment.environment,
             },

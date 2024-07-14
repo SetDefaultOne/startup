@@ -9,8 +9,7 @@
         "sourceMap": true,
         "declarationMap": true,
         "skipLibCheck": true,
-        "composite": true,
         "strict": true
     },
-    "include": ["src/**/*.ts"]
+    "include": ["src/main.ts"]
 }
