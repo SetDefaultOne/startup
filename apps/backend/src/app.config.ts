@@ -1,12 +1,7 @@
 import { registerAs } from "@nestjs/config";
+import { DeploymentEnvironment } from "@bootstrap-brand/sdk";
 
 export const AppConfigKey = "app";
-
-export enum DeploymentEnvironment {
-    "production" = "production",
-    "development" = "development",
-    "test" = "test",
-}
 
 export interface AppConfig {
     deployment: {
@@ -17,7 +12,7 @@ export interface AppConfig {
 
 export default registerAs(AppConfigKey, () => ({
     deployment: {
-        environment: process.env.NODE_ENV || "development",
+        environment: (process.env.NODE_ENV || "development") as DeploymentEnvironment,
         port: Number(process.env.PORT) || 4200,
     },
 }));

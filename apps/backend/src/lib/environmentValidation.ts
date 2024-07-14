@@ -1,9 +1,9 @@
 import { plainToInstance } from "class-transformer";
-import { IsEnum, IsNumber, Max, Min, validateSync } from "class-validator";
-import { DeploymentEnvironment } from "../app.config";
+import { IsIn, IsNumber, Max, Min, validateSync } from "class-validator";
+import { DeploymentEnvironment, deploymentEnvironments } from "@bootstrap-brand/sdk";
 
 class EnvironmentVariables {
-    @IsEnum(DeploymentEnvironment)
+    @IsIn(deploymentEnvironments)
     NODE_ENV: DeploymentEnvironment;
 
     @IsNumber()

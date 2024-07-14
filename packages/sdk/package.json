@@ -1,5 +1,23 @@
 {
     "name": "@bootstrap-brand/sdk",
     "version": "0.0.1",
-    "main": "src/sdk.ts"
+    "type": "module",
+    "source": "src/main.ts",
+    "exports": {
+        "require": "./dist/main.cjs",
+        "default": "./dist/main.modern.js",
+        "types": "./dist/src/main.d.ts"
+    },
+    "main": "./dist/main.cjs",
+    "module": "./dist/main.js",
+    "unpkg": "./dist/main.umd.js",
+    "types": "./dist/src/main.d.ts",
+    "scripts": {
+        "develop": "microbundle watch",
+        "build": "microbundle"
+    },
+    "devDependencies": {
+        "microbundle": "0.15.1",
+        "typescript": "5.5.3"
+    }
 }

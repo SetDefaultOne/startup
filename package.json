@@ -12,6 +12,7 @@
         "url": "https://github.com/SetDefaultOne/bootstrap-brand.git"
     },
     "scripts": {
+        "develop": "turbo run develop",
         "format": "turbo run format:source format",
         "format:source": "prettier . --write --cache",
         "lint": "turbo run lint",

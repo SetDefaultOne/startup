@@ -1,9 +1,10 @@
-import { NestFactory, Reflector } from "@nestjs/core";
+import { HttpAdapterHost, NestFactory, Reflector } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { ClassSerializerInterceptor, ValidationPipe, VERSION_NEUTRAL, VersioningType } from "@nestjs/common";
 import { validationExceptionFactory } from "./lib/validation-exception.factory";
 import { ConfigService } from "@nestjs/config";
 import { AppConfig, AppConfigKey } from "./app.config";
+import { UnhandledExceptionsFilter } from "./lib/unhandled-exceptions.filter";
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -20,6 +21,9 @@ async function bootstrap() {
         type: VersioningType.URI,
         defaultVersion: VERSION_NEUTRAL,
     });
+
+    const httpAdapterHost = app.get(HttpAdapterHost);
+    app.useGlobalFilters(new UnhandledExceptionsFilter(httpAdapterHost));
 
     app.useGlobalPipes(
         new ValidationPipe({
