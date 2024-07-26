@@ -1,5 +1,5 @@
 import { plainToInstance } from "class-transformer";
-import { IsIn, IsNumber, Max, Min, validateSync } from "class-validator";
+import { IsIn, IsNotEmpty, IsNumber, IsString, Max, Min, validateSync } from "class-validator";
 import { DeploymentEnvironment, deploymentEnvironments } from "@bootstrap-brand/sdk";
 
 class EnvironmentVariables {
@@ -10,6 +10,27 @@ class EnvironmentVariables {
     @Min(0)
     @Max(65535)
     PORT: number;
+
+    @IsString()
+    @IsNotEmpty()
+    POSTGRES_HOST: string;
+
+    @IsNumber()
+    @Min(0)
+    @Max(65535)
+    POSTGRES_PORT: number;
+
+    @IsString()
+    @IsNotEmpty()
+    POSTGRES_USERNAME: string;
+
+    @IsString()
+    @IsNotEmpty()
+    POSTGRES_PASSWORD: string;
+
+    @IsString()
+    @IsNotEmpty()
+    POSTGRES_DATABASE: string;
 }
 
 export function environmentValidation(config: Record<string, unknown>) {

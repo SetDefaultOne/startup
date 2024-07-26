@@ -10,9 +10,13 @@ export interface AppConfig {
     };
 }
 
-export default registerAs(AppConfigKey, () => ({
-    deployment: {
-        environment: (process.env.NODE_ENV || "development") as DeploymentEnvironment,
-        port: Number(process.env.PORT) || 4200,
-    },
-}));
+export default registerAs(
+    AppConfigKey,
+    () =>
+        ({
+            deployment: {
+                environment: (process.env.NODE_ENV || "development") as DeploymentEnvironment,
+                port: Number(process.env.PORT) || 4200,
+            },
+        }) satisfies AppConfig,
+);
