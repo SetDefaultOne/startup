@@ -11,23 +11,45 @@ export interface User {
     createdAt: string | Date;
 }
 
+/**
+ * Search parameters to get multiple users by.
+ */
 export interface GetUsersRequestSearchParams {
     username: string;
 }
 
+/**
+ * Response data for multiple users.
+ */
 export type GetUsersSuccessResponseData = User[];
 
+/**
+ * Response data for a single user.
+ */
 export type GetUserSuccessResponseData = User;
 
+/**
+ * The `users` module wrapper.
+ */
 export class UsersCollection extends Collection {
     constructor(options: CollectionInitOptions) {
         super(options);
     }
 
+    /**
+     * Get multiple users based on a search filter.
+     *
+     * @param searchParams { GetUsersRequestSearchParams } Search params to filter users by.
+     */
     async getUsers(searchParams: GetUsersRequestSearchParams) {
         return this.client.query<GetUsersSuccessResponseData>({ searchParams });
     }
 
+    /**
+     * Get a single user data based on their uuid.
+     *
+     * @param uuid string
+     */
     async getUser(uuid: string) {
         return this.client.query<GetUserSuccessResponseData>({ path: `/${uuid}` });
     }
