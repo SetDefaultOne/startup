@@ -4,7 +4,7 @@ import { ErrorResponseBody } from "@bootstrap-brand/sdk";
 
 @Catch()
 export class UnhandledExceptionsFilter implements ExceptionFilter {
-    private logger = new Logger(UnhandledExceptionsFilter.name);
+    private readonly logger = new Logger(UnhandledExceptionsFilter.name);
 
     constructor(private readonly httpAdapterHost: HttpAdapterHost) {}
 

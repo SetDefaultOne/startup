@@ -35,7 +35,7 @@ async function bootstrap() {
     );
 
     app.useGlobalInterceptors(
-        new ClassSerializerInterceptor(new Reflector(), {
+        new ClassSerializerInterceptor(app.get(Reflector), {
             enableCircularCheck: true,
             enableImplicitConversion: true,
             excludePrefixes: ["_"],

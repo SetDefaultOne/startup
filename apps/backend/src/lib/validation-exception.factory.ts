@@ -4,7 +4,7 @@ import { ValidationError } from "class-validator";
 export function validationExceptionFactory(errors: ValidationError[]) {
     return new BadRequestException({
         status: "fail",
-        message: "Bad request.",
+        message: "Could not validate request.",
         data: errors.reduce(
             (errors, error) => {
                 const message = Object.values(error.constraints ?? {}).at(0);
