@@ -11,9 +11,12 @@ export class QueryClient {
         options: QueryOptions = {},
     ): Promise<ExtendedResponseBody<SuccessData, ErrorData, FailData> | QueryClientFail> {
         const { url, version = "v1", collection } = this.config;
-        const { path = "/", searchParams, method = "GET", fetchOverrides = {} } = options;
+        const { path = "/", searchParams, method = "GET" } = options;
 
         let response: Response | undefined;
+
+        let fetchOverrides = this.config.fetchOverrides || {};
+        if (options.fetchOverrides) fetchOverrides = { ...fetchOverrides, ...options.fetchOverrides };
 
         try {
             response = await fetch(
@@ -66,7 +69,7 @@ export interface QueryClientInitOptions extends CollectionInitOptions {}
 
 export type QueryOptions = {
     path?: `/${string}`;
-    searchParams?: Record<string, unknown>;
+    searchParams?: Record<any, any>;
     method?: "GET" | "POST" | "PATCH" | "DELETE";
     fetchOverrides?: RequestInit;
     contentType?: ContentType;
