@@ -1,10 +1,10 @@
 import { HttpAdapterHost, NestFactory, Reflector } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { ClassSerializerInterceptor, ValidationPipe, VERSION_NEUTRAL, VersioningType } from "@nestjs/common";
-import { validationExceptionFactory } from "./lib/validation-exception.factory";
+import { validationExceptionFactory } from "./lib/validationException.factory";
 import { ConfigService } from "@nestjs/config";
 import { AppConfig, AppConfigKey } from "./app.config";
-import { UnhandledExceptionsFilter } from "./lib/unhandled-exceptions.filter";
+import { UnhandledExceptionsFilter } from "./lib/unhandledExceptions.filter";
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);

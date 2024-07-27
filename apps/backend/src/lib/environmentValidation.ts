@@ -31,6 +31,27 @@ class EnvironmentVariables {
     @IsString()
     @IsNotEmpty()
     POSTGRES_DATABASE: string;
+
+    @IsString()
+    @IsNotEmpty()
+    MONGODB_HOST: string;
+
+    @IsNumber()
+    @Min(0)
+    @Max(65535)
+    MONGODB_PORT: number;
+
+    @IsString()
+    @IsNotEmpty()
+    MONGODB_USERNAME: string;
+
+    @IsString()
+    @IsNotEmpty()
+    MONGODB_PASSWORD: string;
+
+    @IsString()
+    @IsNotEmpty()
+    MONGODB_DATABASE: string;
 }
 
 export function environmentValidation(config: Record<string, unknown>) {

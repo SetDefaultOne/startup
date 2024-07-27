@@ -18,4 +18,8 @@ describe("AppController (e2e)", () => {
     it("should be defined", () => {
         return expect(app).toBeDefined();
     });
+
+    afterAll(() => {
+        app.close();
+    });
 });

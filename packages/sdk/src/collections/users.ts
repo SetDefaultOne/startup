@@ -15,6 +15,8 @@ export type GetUsersSuccessResponseData = User[];
 
 export type GetUserSuccessResponseData = User;
 
+export type CreateUserSuccessResponseData = User;
+
 export class UsersCollection {
     constructor(private readonly client: QueryClient) {}
 
@@ -24,5 +26,9 @@ export class UsersCollection {
 
     async getUser(uuid: string, options: QueryOptions = {}) {
         return this.client.query<GetUserSuccessResponseData>(`/${uuid}`, options);
+    }
+
+    async createUser(options: QueryOptions = {}) {
+        return this.client.query<CreateUserSuccessResponseData>("/", { method: "POST", ...options });
     }
 }

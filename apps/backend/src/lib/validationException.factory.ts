@@ -1,5 +1,6 @@
 import { BadRequestException } from "@nestjs/common";
 import { ValidationError } from "class-validator";
+import { QueryFailBody } from "@bootstrap-brand/sdk";
 
 export function validationExceptionFactory(errors: ValidationError[]) {
     return new BadRequestException({
@@ -17,5 +18,5 @@ export function validationExceptionFactory(errors: ValidationError[]) {
             },
             {} as Record<string, string>,
         ),
-    });
+    } satisfies QueryFailBody<Record<string, string>>);
 }

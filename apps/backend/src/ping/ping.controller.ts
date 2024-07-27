@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, VERSION_NEUTRAL } from "@nestjs/common";
 import { PingService } from "./ping.service";
-import { PostPingDto } from "./dto/post-ping.dto";
+import { PostPingDto } from "./dto/postPing.dto";
 import { GetPingSuccessResponseData, QueryResponse } from "@bootstrap-brand/sdk";
 
 @Controller({

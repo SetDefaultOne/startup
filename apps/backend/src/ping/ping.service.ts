@@ -1,5 +1,5 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { PostPingDto } from "./dto/post-ping.dto";
+import { PostPingDto } from "./dto/postPing.dto";
 import appConfig from "../app.config";
 import { ConfigType } from "@nestjs/config";
 import { GetPingSuccessResponseData, QueryResponse } from "@bootstrap-brand/sdk";
