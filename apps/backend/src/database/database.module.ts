@@ -11,5 +11,6 @@ import databaseConfig from "./database.config";
             imports: [ConfigModule.forFeature(databaseConfig)],
         }),
     ],
+    exports: [TypeOrmModule],
 })
 export class DatabaseModule {}

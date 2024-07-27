@@ -18,7 +18,8 @@
         "lint": "turbo run lint",
         "test": "turbo run test",
         "build": "turbo run build",
-        "pass": "turbo run format:source format lint test build"
+        "pass": "turbo run format:source format lint test build",
+        "prepare": "husky"
     },
     "devDependencies": {
         "prettier": "3.3.3",

@@ -1,6 +1,7 @@
 import { PingCollection } from "../collections/ping";
 import { UsersCollection } from "../collections/users";
-import { HostUrl, QueryClient, QueryClientConfig } from "./queryClient";
+import { QueryClient, QueryClientConfig } from "./queryClient";
+import { HostUrl } from "./common";
 
 export class Sdk {
     ping: PingCollection;
