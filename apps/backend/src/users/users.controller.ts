@@ -1,6 +1,6 @@
 import { Controller, Get, HttpException, HttpStatus, Logger, Param, ParseUUIDPipe, Query } from "@nestjs/common";
 import { UsersService } from "./users.service";
-import { GetUsersSuccessResponseData, GetUserSuccessResponseData, ResponseBody } from "@bootstrap-brand/sdk";
+import { GetUsersSuccessResponseData, GetUserSuccessResponseData, QueryResponse } from "@bootstrap-brand/sdk";
 
 @Controller({
     path: "users",
@@ -12,7 +12,7 @@ export class UsersController {
     constructor(private readonly usersService: UsersService) {}
 
     @Get()
-    async getUsers(@Query("username") username: string): Promise<ResponseBody<GetUsersSuccessResponseData>> {
+    async getUsers(@Query("username") username: string): Promise<QueryResponse<GetUsersSuccessResponseData>> {
         const users = await this.usersService.getUsers({ username });
 
         return {
@@ -22,7 +22,9 @@ export class UsersController {
     }
 
     @Get(":uuid")
-    async getUserByUuid(@Param("uuid", ParseUUIDPipe) uuid: string): Promise<ResponseBody<GetUserSuccessResponseData>> {
+    async getUserByUuid(
+        @Param("uuid", ParseUUIDPipe) uuid: string,
+    ): Promise<QueryResponse<GetUserSuccessResponseData>> {
         const user = await this.usersService.getUser(uuid);
 
         if (!user) {
@@ -31,8 +33,8 @@ export class UsersController {
                     status: "error",
                     message: "User not found.",
                     data: null,
-                    code: "E-U001",
-                } satisfies ResponseBody,
+                    code: "E-U4040",
+                } satisfies QueryResponse,
                 HttpStatus.NOT_FOUND,
             );
         }

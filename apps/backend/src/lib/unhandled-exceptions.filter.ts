@@ -1,6 +1,6 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus, Logger } from "@nestjs/common";
 import { HttpAdapterHost } from "@nestjs/core";
-import { ErrorResponseBody } from "@bootstrap-brand/sdk";
+import { QueryErrorBody } from "@bootstrap-brand/sdk";
 
 @Catch()
 export class UnhandledExceptionsFilter implements ExceptionFilter {
@@ -27,8 +27,8 @@ export class UnhandledExceptionsFilter implements ExceptionFilter {
                 status: "error",
                 message: "Server encountered an unknown error.",
                 data: null,
-                code: "E-0001",
-            } satisfies ErrorResponseBody<null>,
+                code: "E-X5000",
+            } satisfies QueryErrorBody,
             HttpStatus.INTERNAL_SERVER_ERROR,
         );
     }

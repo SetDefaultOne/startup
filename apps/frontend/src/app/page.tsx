@@ -1,21 +1,21 @@
-import { isQueryClientFail, isQuerySuccess, Sdk } from "@bootstrap-brand/sdk";
+import { Sdk } from "@bootstrap-brand/sdk";
+import User from "@@/app/User";
 
 export default async function Home() {
-    const sdk = new Sdk({
-        url: "http://localhost:4200/",
-        fetchOverrides: { cache: "no-cache" },
+    const sdk = new Sdk("http://localhost:4200/", {
+        fetchOptions: { cache: "no-cache" },
     });
 
     let messageA = "";
     try {
         const result = await sdk.ping.postPing({ message: "Ping!" });
 
-        if (isQuerySuccess(result)) {
+        if (result.success) {
             messageA = JSON.stringify(result.data, null, 4);
-        } else if (isQueryClientFail(result)) {
-            messageA = JSON.stringify(result.error);
+        } else if (result.fail) {
+            messageA = result.message + " | " + JSON.stringify(result.data);
         } else {
-            messageA = result.message;
+            messageA = result.message + " | " + JSON.stringify(result.data);
         }
     } catch (e) {
         console.error(e);
@@ -25,27 +25,12 @@ export default async function Home() {
     try {
         const result = await sdk.users.getUsers({ username: "default_one" });
 
-        if (isQuerySuccess(result)) {
+        if (result.success) {
             messageB = JSON.stringify(result.data, null, 4);
-        } else if (isQueryClientFail(result)) {
-            messageB = JSON.stringify(result.error);
+        } else if (result.fail) {
+            messageB = result.message + " | " + JSON.stringify(result.data);
         } else {
-            messageB = result.message;
-        }
-    } catch (e) {
-        console.error(e);
-    }
-
-    let messageC = "";
-    try {
-        const result = await sdk.users.getUser("6df19034-8089-445d-8935-7941c658d0e3");
-
-        if (isQuerySuccess(result)) {
-            messageC = JSON.stringify(result.data, null, 4);
-        } else if (isQueryClientFail(result)) {
-            messageC = JSON.stringify(result.error);
-        } else {
-            messageC = result.message;
+            messageB = result.message + " | " + JSON.stringify(result.data);
         }
     } catch (e) {
         console.error(e);
@@ -59,7 +44,7 @@ export default async function Home() {
             <hr />
             <pre>{messageB}</pre>
             <hr />
-            <pre>{messageC}</pre>
+            <User />
         </main>
     );
 }
