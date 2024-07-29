@@ -1,6 +1,6 @@
 import { IsAlphanumeric, IsLowercase, IsString, MaxLength, MinLength } from "class-validator";
 
-export class CreateUserDto {
+export class SignUpDto {
     @IsString()
     @MinLength(5)
     @MaxLength(24)

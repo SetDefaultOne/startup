@@ -20,18 +20,18 @@ export default registerAs(
     () =>
         ({
             postgres: {
-                host: process.env.POSTGRES_HOST as string,
-                port: Number(process.env.POSTGRES_PORT) as number,
-                username: process.env.POSTGRES_USERNAME as string,
-                password: process.env.POSTGRES_PASSWORD as string,
-                database: process.env.POSTGRES_DATABASE as string,
+                host: process.env.POSTGRES_HOST,
+                port: process.env.POSTGRES_PORT,
+                username: process.env.POSTGRES_USERNAME,
+                password: process.env.POSTGRES_PASSWORD,
+                database: process.env.POSTGRES_DATABASE,
             },
             mongodb: {
-                host: process.env.MONGODB_HOST as string,
-                port: Number(process.env.MONGODB_PORT) as number,
-                username: process.env.MONGODB_USERNAME as string,
-                password: process.env.MONGODB_PASSWORD as string,
-                database: process.env.MONGODB_DATABASE as string,
+                host: process.env.MONGODB_HOST,
+                port: process.env.MONGODB_PORT,
+                username: process.env.MONGODB_USERNAME,
+                password: process.env.MONGODB_PASSWORD,
+                database: process.env.MONGODB_DATABASE,
             },
         }) satisfies DatabaseConfig,
 );

@@ -4,18 +4,20 @@ import { useEffect, useRef, useState } from "react";
 import { Sdk } from "@bootstrap-brand/sdk";
 
 export default function User() {
-    const sdk = new Sdk("http://localhost:4200/", {
-        fetchOptions: { cache: "no-cache" },
-    });
-
     const [message, setMessage] = useState("");
     const abortController = useRef<AbortController | null>(null);
 
     useEffect(() => {
+        const sdk = new Sdk("http://localhost:4200/", {
+            fetchOptions: { cache: "no-cache" },
+        });
+
         abortController.current?.abort();
 
+        abortController.current = new AbortController();
+
         sdk.users
-            .getUser("6df19034-8089-445d-8935-7941c658d0e3", { signal: abortController.current?.signal })
+            .getUser("f7f02393-b48e-49ac-a465-5a8786fe7e89", { signal: abortController.current?.signal })
             .then((result) => {
                 if (!result.success) return;
 

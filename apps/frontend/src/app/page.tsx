@@ -23,7 +23,7 @@ export default async function Home() {
 
     let messageB = "";
     try {
-        const result = await sdk.users.getUsers({ username: "default_one" });
+        const result = await sdk.users.getUsers({ username: "defaultone" });
 
         if (result.success) {
             messageB = JSON.stringify(result.data, null, 4);

@@ -22,8 +22,8 @@ export default registerAs(
             },
             encryption: {
                 algorithm: "aes-256-cbc",
-                initializationVector: process.env.ENCRYPTION_INITIALIZATION_VECTOR as string,
-                secret: process.env.ENCRYPTION_SECRET as string,
+                initializationVector: process.env.ENCRYPTION_INITIALIZATION_VECTOR,
+                secret: process.env.ENCRYPTION_SECRET,
             },
         }) satisfies CipherConfig,
 );

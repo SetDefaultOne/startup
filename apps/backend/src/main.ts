@@ -5,6 +5,7 @@ import { validationExceptionFactory } from "./lib/validationException.factory";
 import { ConfigService } from "@nestjs/config";
 import { AppConfig, AppConfigKey } from "./app.config";
 import { UnhandledExceptionsFilter } from "./lib/unhandledExceptions.filter";
+import * as cookieParser from "cookie-parser";
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -41,6 +42,8 @@ async function bootstrap() {
             excludePrefixes: ["_"],
         }),
     );
+
+    app.use(cookieParser());
 
     await app.listen(configuration.deployment.port);
 }

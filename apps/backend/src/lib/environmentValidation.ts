@@ -16,6 +16,10 @@ class EnvironmentVariables {
     @IsIn(deploymentEnvironments)
     NODE_ENV: DeploymentEnvironment;
 
+    @IsString()
+    @IsNotEmpty()
+    HOST: string;
+
     @IsNumber()
     @Min(0)
     @Max(65535)
@@ -74,6 +78,12 @@ class EnvironmentVariables {
     @IsAlphanumeric("en-US")
     @IsLowercase()
     ENCRYPTION_SECRET: string;
+
+    @IsString()
+    @IsNotEmpty()
+    @IsAlphanumeric("en-US")
+    @IsLowercase()
+    JWT_SECRET: string;
 }
 
 export function environmentValidation(config: Record<string, unknown>) {

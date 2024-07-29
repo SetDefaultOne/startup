@@ -6,6 +6,7 @@ export const AppConfigKey = "app";
 export interface AppConfig {
     deployment: {
         environment: DeploymentEnvironment;
+        host: string;
         port: number;
     };
 }
@@ -15,8 +16,9 @@ export default registerAs(
     () =>
         ({
             deployment: {
-                environment: (process.env.NODE_ENV || "development") as DeploymentEnvironment,
-                port: Number(process.env.PORT) || 4200,
+                environment: process.env.NODE_ENV,
+                host: process.env.HOST,
+                port: process.env.PORT,
             },
         }) satisfies AppConfig,
 );
