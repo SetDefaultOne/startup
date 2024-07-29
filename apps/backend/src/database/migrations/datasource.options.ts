@@ -14,7 +14,7 @@ const datasource = new DataSource({
     database: process.env.POSTGRES_DATABASE,
     migrationsTableName: "migrations",
     entities: [User],
-    // NOTE: Migrations that are generated/created must be added to this list before running the database migration
+    // WARN: Migrations that are generated/created must be added to this list before running the database migration
     //  command. Those that have been generated but not added to this list won't be applied.
     migrations,
 });

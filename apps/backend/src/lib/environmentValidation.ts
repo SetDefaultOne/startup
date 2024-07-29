@@ -1,5 +1,15 @@
 import { plainToInstance } from "class-transformer";
-import { IsIn, IsNotEmpty, IsNumber, IsString, Max, Min, validateSync } from "class-validator";
+import {
+    IsAlphanumeric,
+    IsIn,
+    IsLowercase,
+    IsNotEmpty,
+    IsNumber,
+    IsString,
+    Max,
+    Min,
+    validateSync,
+} from "class-validator";
 import { DeploymentEnvironment, deploymentEnvironments } from "@bootstrap-brand/sdk";
 
 class EnvironmentVariables {
@@ -52,6 +62,18 @@ class EnvironmentVariables {
     @IsString()
     @IsNotEmpty()
     MONGODB_DATABASE: string;
+
+    @IsString()
+    @IsNotEmpty()
+    @IsAlphanumeric("en-US")
+    @IsLowercase()
+    ENCRYPTION_INITIALIZATION_VECTOR: string;
+
+    @IsString()
+    @IsNotEmpty()
+    @IsAlphanumeric("en-US")
+    @IsLowercase()
+    ENCRYPTION_SECRET: string;
 }
 
 export function environmentValidation(config: Record<string, unknown>) {

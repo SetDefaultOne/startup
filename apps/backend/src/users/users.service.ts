@@ -7,17 +7,19 @@ import { MongooseUser } from "./user.schema";
 import { Model } from "mongoose";
 import { QueryErrorBody } from "@bootstrap-brand/sdk";
 import { CreateUserDto } from "./dto/createUser.dto";
+import { CipherService } from "../cipher/cipher.service";
 
 @Injectable()
 export class UsersService {
     private readonly logger = new Logger(UsersService.name);
 
     constructor(
-        private readonly datasource: DataSource,
+        private readonly dataSource: DataSource,
         @InjectRepository(User)
         private readonly usersRepository: Repository<User>,
         @InjectModel(MongooseUser.name)
         private readonly mongooseUserModel: Model<MongooseUser>,
+        private readonly cipherService: CipherService,
     ) {}
 
     async getUsers({ username, limit = 10 }: { username: string; limit?: number }): Promise<User[]> {
@@ -37,11 +39,14 @@ export class UsersService {
 
     async createUser(createUserDto: CreateUserDto) {
         try {
-            return await this.datasource.transaction(async (entityManager) => {
+            return await this.dataSource.transaction(async (entityManager) => {
+                const { username, password } = createUserDto;
+
+                const passwordHash = await this.cipherService.hashPassword(password);
+
                 const user = this.usersRepository.create({
-                    username: createUserDto.username,
-                    passwordHash: "",
-                    passwordSalt: "",
+                    username,
+                    passwordHash,
                 });
                 await entityManager.save(user);
 

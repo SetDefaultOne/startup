@@ -1,4 +1,5 @@
-import { UserInit1721965499932 } from "./1721965499932-UserInit";
+import { UserInit1722088300113 } from "./1722088300113-UserInit";
 
-// NOTE: Update list in ascending order of creation time.
-export default [UserInit1721965499932];
+// WARN: Update list in ascending order of creation time otherwise they won't be applied when running the migration
+//  command.
+export default [UserInit1722088300113];
