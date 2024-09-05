@@ -1,10 +1,14 @@
 {
-  "name": "startup",
-  "devDependencies": {
-    "@commitlint/cli": "19.4.1",
-    "husky": "9.1.5"
-  },
-  "scripts": {
-    "prepare": "husky"
-  }
+    "name": "startup",
+    "version": "0.0.0",
+    "devDependencies": {
+        "@commitlint/cli": "19.4.1",
+        "husky": "9.1.5",
+        "syncpack": "13.0.0"
+    },
+    "scripts": {
+        "format": "syncpack format",
+        "lint": "syncpack lint",
+        "prepare": "husky"
+    }
 }
