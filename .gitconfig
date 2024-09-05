@@ -1,0 +1,5 @@
+[core]
+    autocrlf = input
+    eol = lf
+[commit]
+    template = ./.gitmessage
