@@ -1,0 +1,9 @@
+{
+    "$schema": "https://json.schemastore.org/prettierrc.json",
+    "printWidth": 80,
+    "tabWidth": 4,
+    "endOfLine": "lf",
+    "proseWrap": "always",
+    "trailingComma": "all",
+    "plugins": ["prettier-plugin-tailwindcss"]
+}

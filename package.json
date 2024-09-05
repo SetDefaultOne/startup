@@ -3,6 +3,7 @@
     "version": "0.0.0",
     "devDependencies": {
         "@commitlint/cli": "19.4.1",
+        "@startup/prettier-config": "*",
         "husky": "9.1.5",
         "syncpack": "13.0.0",
         "turbo": "2.1.1"
@@ -10,8 +11,8 @@
     "packageManager": "npm@10.8.2",
     "scripts": {
         "format": "turbo run global:format",
-        "global:format": "syncpack format",
-        "global:lint": "syncpack lint",
+        "global:format": "syncpack format && prettier --write --cache .",
+        "global:lint": "syncpack lint && prettier --check --cache .",
         "lint": "turbo run global:lint",
         "prepare": "husky"
     },
