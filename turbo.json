@@ -1,0 +1,10 @@
+{
+    "$schema": "https://turborepo.org/schema.json",
+    "tasks": {
+        "//#global:format": {},
+        "//#global:lint": {
+            "dependsOn": ["global:format"]
+        }
+    },
+    "ui": "stream"
+}
