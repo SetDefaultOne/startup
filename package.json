@@ -10,11 +10,14 @@
     },
     "packageManager": "npm@10.8.2",
     "scripts": {
-        "format": "turbo run global:format",
+        "build": "turbo run build",
+        "dev": "turbo run dev",
+        "format": "turbo run global:format format",
         "global:format": "syncpack format && prettier --write --cache .",
         "global:lint": "syncpack lint && prettier --check --cache .",
-        "lint": "turbo run global:lint",
-        "prepare": "husky"
+        "lint": "turbo run global:lint lint",
+        "prepare": "husky",
+        "test": "turbo run test"
     },
     "workspaces": [
         "apps/*",

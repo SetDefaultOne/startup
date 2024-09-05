@@ -1,0 +1,43 @@
+{
+    "name": "@startup/engine",
+    "version": "0.0.0",
+    "dependencies": {
+        "@nestjs/common": "10.4.1",
+        "@nestjs/core": "10.4.1",
+        "@nestjs/platform-express": "10.4.1",
+        "reflect-metadata": "0.2.2",
+        "rxjs": "7.8.1"
+    },
+    "devDependencies": {
+        "@nestjs/cli": "10.4.5",
+        "@nestjs/schematics": "10.1.4",
+        "@nestjs/testing": "10.4.1",
+        "@startup/eslint-config": "*",
+        "@startup/typescript-config": "*",
+        "@types/express": "4.17.21",
+        "@types/jest": "29.5.12",
+        "@types/node": "22.5.4",
+        "@types/supertest": "6.0.2",
+        "jest": "29.7.0",
+        "source-map-support": "0.5.21",
+        "supertest": "7.0.0",
+        "ts-jest": "29.2.5",
+        "ts-loader": "9.5.1",
+        "ts-node": "10.9.2",
+        "tsconfig-paths": "4.2.0"
+    },
+    "scripts": {
+        "build": "nest build",
+        "dev": "nest start --watch",
+        "lint": "eslint \"{src,test}/**/*.ts\" --fix",
+        "start": "nest start",
+        "start:debug": "nest start --debug --watch",
+        "start:prod": "node dist/main",
+        "test": "turbo run test:unit test:cov test:e2e",
+        "test:cov": "jest --coverage --passWithNoTests",
+        "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand --passWithNoTests",
+        "test:e2e": "jest --config ./test/jest-e2e.json --passWithNoTests",
+        "test:unit": "jest --passWithNoTests",
+        "test:watch": "jest --watch --passWithNoTests"
+    }
+}

@@ -3,7 +3,25 @@
     "tasks": {
         "//#global:format": {},
         "//#global:lint": {
-            "dependsOn": ["global:format"]
+            "dependsOn": ["//#global:format"]
+        },
+        "dev": {
+            "persistent": true,
+            "cache": false
+        },
+        "format": {
+            "dependsOn": ["//#global:format"]
+        },
+        "lint": {
+            "dependsOn": ["^build", "format"]
+        },
+        "test": {
+            "outputs": ["coverage/**"],
+            "dependsOn": ["^build", "format", "lint", "build"]
+        },
+        "build": {
+            "outputs": ["dist/**"],
+            "dependsOn": ["^build", "format", "lint"]
         }
     },
     "ui": "stream"
